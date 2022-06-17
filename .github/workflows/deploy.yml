@@ -18,12 +18,11 @@ jobs:
 
             - name: create env file
               run: |
-                  mkdir config
-                  touch config/.prod.env
-                  echo "${{ secrets.ENV_VARS }}" >> config/.prod.env
+                  touch .env
+                  echo "${{ secrets.ENV_VARS }}" >> .env
 
             - name: create remote directory
-            - uses: appleboy/ssh-action@main
+              uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.HOST }}
                   username: ubuntu
@@ -40,7 +39,7 @@ jobs:
                   remote_key: ${{ secrets.KEY }}
 
             - name: delete useless images and containers
-              uses: appleboy/ssh-action@main
+              uses: appleboy/ssh-action@master
               with:
                 host: ${{ secrets.HOST }}
                 username: ubuntu
@@ -51,7 +50,7 @@ jobs:
                   sudo yes y | sudo docker system prune -af
 
             - name: executing remote ssh commands using password
-              uses: appleboy/ssh-action@main
+              uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.HOST }}
                   username: ubuntu
