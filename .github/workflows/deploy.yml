@@ -22,7 +22,7 @@ jobs:
                   echo "${{ secrets.ENV_VARS }}" >> .env
 
             - name: create remote directory
-              uses: appleboy/ssh-action@master
+              uses: appleboy/ssh-action@v0.1.4
               with:
                   host: ${{ secrets.HOST }}
                   username: ubuntu
