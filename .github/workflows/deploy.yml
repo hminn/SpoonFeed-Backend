@@ -18,8 +18,9 @@ jobs:
 
             - name: create env file
               run: |
-                  touch .env
-                  echo "${{ secrets.ENV_VARS }}" >> .env
+                  mkdir -p /home/ubuntu/srv/ubuntu/config
+                  touch /home/ubuntu/srv/ubuntu/config/.prod.env
+                  echo "${{ secrets.ENV_VARS }}" >> /home/ubuntu/srv/ubuntu/config/.prod.env
 
             - name: create remote directory
               uses: appleboy/ssh-action@master
