@@ -1,11 +1,8 @@
 name: Deploy to EC2
 
-# on:
-#     push:
-#         branches: master
 on:
-    pull_request:
-        branches: development
+    push:
+        branches: master
 
 jobs:
     build:
@@ -18,8 +15,9 @@ jobs:
 
             - name: create env file
               run: |
-                  touch .env
-                  echo "${{ secrets.ENV_VARS }}" >> .env
+                  mkdir -p config
+                  touch config/.prod.env
+                  echo "${{ secrets.ENV_VARS }}" >> config/.prod.env
 
             - name: create remote directory
               uses: appleboy/ssh-action@master
@@ -27,7 +25,9 @@ jobs:
                   host: ${{ secrets.HOST }}
                   username: ubuntu
                   key: ${{ secrets.KEY }}
-                  script: mkdir -p /home/ubuntu/srv/ubuntu
+                  script: |
+                    whoami
+                    mkdir -p /home/ubuntu/srv/ubuntu
 
             - name: copy source via ssh key
               uses: burnett01/rsync-deployments@4.1
@@ -38,16 +38,16 @@ jobs:
                   remote_user: ubuntu
                   remote_key: ${{ secrets.KEY }}
 
-            - name: delete useless images and containers
-              uses: appleboy/ssh-action@master
-              with:
-                host: ${{ secrets.HOST }}
-                username: ubuntu
-                key: ${{ secrets.KEY }}
-                script: |
-                  sudo yes y | sudo docker image prune
-                  sudo yes y | sudo docker container prune
-                  sudo yes y | sudo docker system prune -af
+            # - name: delete useless images and containers
+            #   uses: appleboy/ssh-action@master
+            #   with:
+            #     host: ${{ secrets.HOST }}
+            #     username: ubuntu
+            #     key: ${{ secrets.KEY }}
+            #     script: |
+            #       sudo yes y | sudo docker image prune
+            #       sudo yes y | sudo docker container prune
+            #       sudo yes y | sudo docker system prune -af
 
             - name: executing remote ssh commands using password
               uses: appleboy/ssh-action@master
