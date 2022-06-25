@@ -15,7 +15,6 @@ jobs:
 
             - name: create env file
               run: |
-                  mkdir -p config
                   touch config/.prod.env
                   echo "${{ secrets.ENV_VARS }}" >> config/.prod.env
 
