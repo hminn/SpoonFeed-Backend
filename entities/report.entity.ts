@@ -11,7 +11,7 @@ import {
 import { User } from './user.entity';
 import { Comment } from './comment.entity';
 import { Post } from './post.entity';
-import { ReportReason } from './common/Enums';
+import { ReportReason } from './common/enums';
 
 @Entity()
 export class Report extends BaseEntity {

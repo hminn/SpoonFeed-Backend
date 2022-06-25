@@ -17,7 +17,7 @@ import {
   HasHouse,
   IsHouseOwner,
   MaritalStatus,
-} from './common/Enums';
+} from './common/enums';
 import { IsEmail } from 'class-validator';
 import Question from './question.entity';
 import { Token } from './token.entity';

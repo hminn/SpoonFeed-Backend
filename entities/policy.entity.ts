@@ -13,7 +13,7 @@ import {
   HasHouse,
   IsHouseOwner,
   MaritalStatus,
-} from './common/Enums';
+} from './common/enums';
 import { Like } from './like.entity';
 
 @Entity()

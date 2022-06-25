@@ -20,7 +20,7 @@ import {
   MaritalStatus,
   MedianIncome,
   WorkStatus,
-} from './common/Enums';
+} from './common/enums';
 import { Comment } from './comment.entity';
 import Report from './report.entity';
 
