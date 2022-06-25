@@ -1,10 +1,23 @@
-export { default as User } from './user.entity';
-export { default as Comment } from './comment.entity';
-export { default as Notice } from './notice.entity';
-export { default as Like } from './like.entity';
-export { default as Policy } from './policy.entity';
-export { default as Post } from './post.entity';
-export { default as Question } from './question.entity';
-export { default as Token } from './token.entity';
-export { default as Report } from './report.entity';
-export { default as Block } from './block.entity';
+import { User } from './user.entity';
+import { Comment } from './comment.entity';
+import { Notice } from './notice.entity';
+import { Like } from './like.entity';
+import { Policy } from './policy.entity';
+import { Post } from './post.entity';
+import { Question } from './question.entity';
+import { Token } from './token.entity';
+import { Report } from './report.entity';
+import { Block } from './block.entity';
+
+export default [
+  User,
+  Comment,
+  Notice,
+  Like,
+  Policy,
+  Post,
+  Question,
+  Token,
+  Report,
+  Block,
+];

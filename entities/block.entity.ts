@@ -31,7 +31,7 @@ export class Block extends BaseEntity {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'user_id' })
-  @PrimaryColumn()
+  @PrimaryColumn('int')
   user!: User;
 
   @ManyToOne(() => User, (user) => user.block, {
@@ -39,7 +39,7 @@ export class Block extends BaseEntity {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'blocked_id' })
-  @PrimaryColumn()
+  @PrimaryColumn('int')
   blocked!: User;
 }
 

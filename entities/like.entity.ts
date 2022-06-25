@@ -8,8 +8,8 @@ import {
   PrimaryColumn,
 } from 'typeorm';
 import 'reflect-metadata';
-import { Policy } from './index';
-import { User } from './index';
+import { User } from './user.entity';
+import { Policy } from './policy.entity';
 
 @Entity()
 export class Like extends BaseEntity {
@@ -33,7 +33,7 @@ export class Like extends BaseEntity {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'user_id' })
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'int' })
   user!: User;
 
   @ManyToOne(() => Policy, (policy) => policy.like, {
@@ -41,7 +41,7 @@ export class Like extends BaseEntity {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'policy_id' })
-  @PrimaryColumn()
+  @PrimaryColumn('int')
   policy!: Policy;
 }
 
